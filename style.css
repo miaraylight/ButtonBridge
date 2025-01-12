@@ -35,6 +35,10 @@ ul {
 img {
     height: auto;
     margin-right: 20px;
+    opacity: .4;
+    background-color: #EFEE9D;
+    padding: 10px;
+    border-radius: 50%;
 }
 
 /* page */
@@ -54,7 +58,8 @@ main {
 header {
     width: 100vw;
     padding: 30px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.267);
+    border-bottom: 3px dashed #E0C3FC;
+    border-radius: 40px;
     display: flex;
     align-items: center;
 }
@@ -64,13 +69,17 @@ h1 {
     margin-bottom: 10px;
     font-size: 2.5rem;
     font-weight: 600;
+    color: #A5CDE4;
 }
 
 p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #a4a4a4    ;
 }
 
 .boxContainer {
+    background-color: #e2e2e257;
+    border-radius: 40px;
     padding: 40px;
     height: 100%;
     display: grid;
@@ -80,14 +89,27 @@ p {
     justify-content: center;
 }
 
-button {
+.linkButton {
     border-radius: 10px;
     cursor: pointer;
-}
-
-a {
     font-size: 1.3rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
     color: black;
+    width: 200px;
+    height: 90px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(63deg, #8EC5FC 0%, #E0C3FC);
+    opacity: .7;
+    color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.linkButton:hover {
+    opacity: 1;
+    font-size: 1.4rem;
 }
