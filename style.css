@@ -33,12 +33,13 @@ ul {
 }
 
 img {
+    width: 100px;
     height: auto;
     margin-right: 20px;
-    opacity: .4;
+    /* opacity: .4;
     background-color: #EFEE9D;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 50%; */
 }
 
 /* page */
