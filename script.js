@@ -205,58 +205,63 @@ const group = [
 
 const boxContainer = document.querySelector(".cardsBox"); 
 
-const svgEmail = `<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M 0 7 L 0 9.875 L 25 29.71875 L 50 10.125 L 50 7 Z M 0 12.40625 L 0 43 L 50 43 L 50 12.65625 L 25.625 31.78125 C 25.445313 31.921875 25.21875 32 25 32 C 24.78125 32 24.558594 31.925781 24.375 31.78125 Z"/></svg>`
-const svgLinkedin = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
-    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
-</svg>`
+const svgIcons = {
+    email: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px"><path d="M 0 7 L 0 9.875 L 25 29.71875 L 50 10.125 L 50 7 Z M 0 12.40625 L 0 43 L 50 43 L 50 12.65625 L 25.625 31.78125 C 25.445313 31.921875 25.21875 32 25 32 C 24.78125 32 24.558594 31.925781 24.375 31.78125 Z"/></svg>`,
+    linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56c3.97,0,7.19,2.73,7.19,8.26V39z"></path></svg>`
+};
 
-for (let i = 0; i < group.length; i++) {
+const fragment = document.createDocumentFragment();
 
-    const element = group[i];
-
-    let userCardsBox = document.createElement("div");
-    let infoBox = document.createElement("div");
-    let name = document.createElement("h4");
-    let title = document.createElement("h5");
-    let skills = document.createElement("h6");
-    let aboutText = document.createElement("p");
-    let userImgBox = document.createElement("userImgBox");
-    let img = document.createElement("img"); 
-    let linkedin = document.createElement("a");
-    let email = document.createElement("a");
-
-    
-    name.textContent = element.name;
-    title.textContent = element.roles
-    skills.textContent = `Top Skills: ${element.skills}` 
-    email.setAttribute('href', `mailto: ${element.email}`)
-    email.textContent = element.email
-    img.src = element.image
-    linkedin.innerHTML = svgLinkedin
-    email.innerHTML = svgEmail
-    aboutText.textContent = element.about
-
+group.forEach(({ name, roles, skills, email, image, linkedin, about }) => {
+    const userCardsBox = document.createElement("div");
     userCardsBox.classList.add("userCardsBox");
-    infoBox.classList.add("infoBox");
-    img.classList.add("userImg");
-    aboutText.classList.add("aboutText");
-    linkedin.classList.add("linkButton");
-    email.classList.add("linkButton");
-    userImgBox.classList.add("userImgBox")
 
-    email.addEventListener("click", ()=> navigator.clipboard.writeText(element.email).then(()=>{
-        alert("Copied!")
-    }))
-    linkedin.addEventListener("click", ()=> window.open(`${element.linkedin}`, '_blank')); // Attach a click event listener to navigate
-    userImgBox.appendChild(img)
-    userCardsBox.appendChild(userImgBox)
-    infoBox.appendChild(name);
-    infoBox.appendChild(title); 
-    infoBox.appendChild(skills);
-    infoBox.appendChild(aboutText);
-    infoBox.appendChild(linkedin);
-    infoBox.appendChild(email);
-    userCardsBox.appendChild(infoBox)
-    
-    boxContainer.appendChild(userCardsBox) 
-}
+    // Image Box
+    const userImgBox = document.createElement("div");
+    userImgBox.classList.add("userImgBox");
+
+    const img = document.createElement("img");
+    img.classList.add("userImg");
+    img.src = image;
+    img.alt = name;
+
+    userImgBox.appendChild(img);
+    userCardsBox.appendChild(userImgBox);
+
+    // Info Box
+    const infoBox = document.createElement("div");
+    infoBox.classList.add("infoBox");
+
+    infoBox.innerHTML = `
+        <h4>${name}</h4>
+        <h5>${roles}</h5>
+        <h6>Top Skills: ${skills}</h6>
+        <p class="aboutText">${about}</p>
+    `;
+
+    // LinkedIn button
+    const linkedinBtn = document.createElement("a");
+    linkedinBtn.classList.add("linkButton");
+    linkedinBtn.innerHTML = svgIcons.linkedin;
+    linkedinBtn.href = linkedin;
+    linkedinBtn.target = "_blank";
+
+    // Email button
+    const emailBtn = document.createElement("a");
+    emailBtn.classList.add("linkButton");
+    emailBtn.innerHTML = svgIcons.email;
+    emailBtn.href = `mailto:${email}`;
+    emailBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(email).then(() => alert("Copied!"));
+    });
+
+    infoBox.appendChild(linkedinBtn);
+    infoBox.appendChild(emailBtn);
+
+    userCardsBox.appendChild(infoBox);
+    fragment.appendChild(userCardsBox);
+});
+
+// Append everything to the container 
+boxContainer.appendChild(fragment);
