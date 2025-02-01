@@ -15,7 +15,7 @@ const group = [
         email: "NDawson@icstars.org",
         linkedin: "https://www.linkedin.com/in/hirenaiadawson/",
         image: "images/headshots/Naia_Dawson.JPG",
-        roles: ["Product Design/E-commerce and Digital Solutions Architect"],
+        roles: ["Product Design", "E-commerce and Digital Solutions Architect"],
         skills: ["HTML", "CSS", "JavaScript", "Swift", "Rust", "Go", "Adobe Creative Cloud"],
         about: "Naia appreciates the thoughtful feedback her peers have shared about her. They often praise her for being organized, creative, and assertive—qualities that are highly valued in a creative department. These traits make her an exceptional asset to any team."
     },
@@ -25,7 +25,7 @@ const group = [
         email: "JHarris@icstars.org",
         linkedin: "https://www.linkedin.com/in/hirejameerharris/",
         image: "images/headshots/Jameer_Harris.JPG",
-        roles: ["Security Engineer and Ethical Hacker"],
+        roles: ["Security Engineer", "Ethical Hacker"],
         skills: ["JavaScript", "CSS", "HTML", "Web Development"],
         about: "Jameer is a well-spoken person who displays leadership skills by helping manage projects during group work. Jameer takes initiative and is proactive when it comes to getting through tough assignments. He loves to publicly speak about the work that he and his group have completed, while pointing out the challenges and how he overcame them."
     },
@@ -65,7 +65,7 @@ const group = [
         email: "DFrieson@icstars.org",
         linkedin: "https://www.linkedin.com/in/hiredestinyfrieson-423309335/",
         image: "images/headshots/Destiny_Frieson.JPG",
-        roles: ["Software Engineer or User Experience Designer"],
+        roles: ["Software Engineer", "User Experience Designer"],
         skills: ["HTML", "JavaScript"],
         about: "Known for their determination and motivation, they consistently tackle challenges with focus and resilience. A skilled multitasker with excellent communication abilities, they seamlessly balance priorities while fostering collaboration and understanding. Peers often describe them as dependable, resourceful, and an inspiring team player, making them an invaluable asset to any organization."
     },
@@ -105,7 +105,7 @@ const group = [
         email: "NHassaballa@icstars.org",
         linkedin: "https://www.linkedin.com/in/theworldisnoors/",
         image: "images/headshots/Noor_Hassaballa.JPG",
-        roles: ["Software Engineer or DevOps"],
+        roles: ["Software Engineer", "DevOps"],
         skills: ["HTML", "CSS", "SQL", "React", "Python", "JavaScript"],
         about: "Noor is a powerhouse in technology, combining laser-sharp focus with an unrelenting drive to deliver results. Renowned for her ability to unravel complex challenges, she harnesses her deep expertise to craft innovative solutions that make an impact. With an unyielding pursuit of excellence, Noor turns obstacles into opportunities, emerging as a trusted problem-solver and leader in her field."
     },
@@ -116,7 +116,7 @@ const group = [
         linkedin: "https://www.linkedin.com/in/miaraylight/",
         image: "images/headshots/Malika_Taitelieva.JPG",
         roles: ["Front-End Developer", "Software Engineer"],
-        skills: ["HTML", "CSS", "JavaScript", "React", "React Router Dom", "Redux", "Redux Toolkit", "SQL", "MySQL", "MongoDB", "Firebase", "Python", "Git", "Flutter", "Software Development"],
+        skills: ["HTML", "CSS", "JavaScript", "React", "React Router Dom", "Redux", "Redux Toolkit", "SQL", "MySQL", "MongoDB", "Firebase", "Python", "Git", "Flutter"],
         about: "Malika is a collaborative team member with a strong analytical mindset, quick learning ability, and resourcefulness in identifying the most effective solutions to complex challenges. She excels in bridging front-end and back-end development, delivering intuitive, scalable solutions with a strong focus on user experience. Her adaptability, sharp technical expertise, and composure under pressure make her an invaluable asset, consistently delivering innovative solutions, and driving success in fast-paced environments."
     },
     {
@@ -145,7 +145,7 @@ const group = [
         email: "EGonzalez@icstars.org",
         linkedin: "https://www.linkedin.com/in/hireed/",
         image: "images/headshots/Edson_Gonzalez.JPG",
-        roles: ["Creative Coding", "Product Design", "Software Engineer"],
+        roles: ["Product Designer", "Software Engineer"],
         skills: ["HTML", "CSS", "JavaScript", "Python", "SQL", "React", "JavaScript Frameworks"],
         about: "Edson’s passion for technology is evident in his ability to seamlessly blend creativity with technical expertise. Peers recognize him as a thoughtful problem-solver who brings unique perspectives to team discussions. His ability to collaborate and communicate clearly allows him to contribute effectively to any project. With a focus on continuous growth and innovation, Edson has established himself as a valuable team player in the tech industry."
     },
@@ -203,16 +203,60 @@ const group = [
 
 ];
 
-const boxContainer = document.querySelector(".boxContainer"); // get div from html
+const boxContainer = document.querySelector(".cardsBox"); 
+
+const svgEmail = `<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M 0 7 L 0 9.875 L 25 29.71875 L 50 10.125 L 50 7 Z M 0 12.40625 L 0 43 L 50 43 L 50 12.65625 L 25.625 31.78125 C 25.445313 31.921875 25.21875 32 25 32 C 24.78125 32 24.558594 31.925781 24.375 31.78125 Z"/></svg>`
+const svgLinkedin = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
+</svg>`
 
 for (let i = 0; i < group.length; i++) {
+
     const element = group[i];
-    let link = document.createElement("a"); // Create a linkedin for element 
+
+    let userCardsBox = document.createElement("div");
+    let infoBox = document.createElement("div");
+    let name = document.createElement("h4");
+    let title = document.createElement("h5");
+    let skills = document.createElement("h6");
+    let aboutText = document.createElement("p");
+    let userImgBox = document.createElement("userImgBox");
     let img = document.createElement("img"); 
+    let linkedin = document.createElement("a");
+    let email = document.createElement("a");
+
+    
+    name.textContent = element.name;
+    title.textContent = element.roles
+    skills.textContent = `Top Skills: ${element.skills}` 
+    email.setAttribute('href', `mailto: ${element.email}`)
+    email.textContent = element.email
     img.src = element.image
-    link.textContent = element.name; // Set the linkedin text to the element name
-    link.classList.add("linkedinButton"); // Add a CSS class for styling
-    link.addEventListener("click", ()=> window.open(`${element.linkedin}`, '_blank')); // Attach a click event listener to navigate
-    boxContainer.appendChild(link);
-    boxContainer.appendChild(img); 
+    linkedin.innerHTML = svgLinkedin
+    email.innerHTML = svgEmail
+    aboutText.textContent = element.about
+
+    userCardsBox.classList.add("userCardsBox");
+    infoBox.classList.add("infoBox");
+    img.classList.add("userImg");
+    aboutText.classList.add("aboutText");
+    linkedin.classList.add("linkButton");
+    email.classList.add("linkButton");
+    userImgBox.classList.add("userImgBox")
+
+    email.addEventListener("click", ()=> navigator.clipboard.writeText(element.email).then(()=>{
+        alert("Copied!")
+    }))
+    linkedin.addEventListener("click", ()=> window.open(`${element.linkedin}`, '_blank')); // Attach a click event listener to navigate
+    userImgBox.appendChild(img)
+    userCardsBox.appendChild(userImgBox)
+    infoBox.appendChild(name);
+    infoBox.appendChild(title); 
+    infoBox.appendChild(skills);
+    infoBox.appendChild(aboutText);
+    infoBox.appendChild(linkedin);
+    infoBox.appendChild(email);
+    userCardsBox.appendChild(infoBox)
+    
+    boxContainer.appendChild(userCardsBox) 
 }

@@ -27,19 +27,11 @@ ul {
     font-weight: normal;
 }
 
-ol,
-ul {
-    list-style: none;
-}
-
 img {
-    width: 100px;
-    height: auto;
     margin-right: 20px;
-    /* opacity: .4;
-    background-color: #EFEE9D;
-    padding: 10px;
-    border-radius: 50%; */
+    max-width: 300px;
+    min-width: 150px;
+    border-radius: 1.5rem;
 }
 
 /* page */
@@ -47,73 +39,253 @@ img {
 body {
     width: 100vw;
     overflow-y: scroll;
-    background-color: #f9fcff;
-    background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
 }
 
 ::-webkit-scrollbar {
     display: none;
 }
 
-main {
-    min-width: 350px;
-    height: 100vh;
-    margin: 0 auto;
-}
-
-/* content */
-
 header {
     width: 100vw;
-    padding: 30px;
-    border-bottom: 3px dashed #E0C3FC;
-    border-radius: 40px;
+    padding: 100px 0;
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-image: url("/images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.titleBox {
+    width: 100%;
+    background-color: #a60f3597;
+    padding: 30px;
+    text-align: center;
 }
 
 h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
     margin-bottom: 10px;
     font-size: 2.5rem;
-    font-weight: 600;
-    color: #A5CDE4;
+    color: #ffffff;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* content */
+.content {
+    max-width: 1640px;
+    min-width: 350px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 4rem;
+}
+
+.about,
+.info,
+.contact {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+h3 {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #751040;
+    text-transform: uppercase;
+}
+
+.aboutText {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+/* ------------------------- */
+
+.info {}
+
+.info ul {
+    padding: 0 20px;
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 3.3em;
+    color: #d21242;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+}
+
+h5 {
+    font-family: "Montserrat", serif;
+    font-weight: bold;
+    color: #751040;
+    font-size: 3em;
+    margin: 1rem 0;
+}
+
+h6 {
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #d21242;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #a4a4a4    ;
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #191717;
+    font-size: 1.2em;
+}
+
+/* ------------------------- */
+
+.contactTitle {
+    font-family: "Lato", serif;
+    color: #191717;
+    font-size: 2em;
+    margin-bottom: 1rem;
+}
+
+.contactCard {
+    display: flex;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.contactInfo {
+    font-family: "Lato", serif;
+    padding: 1rem;
+}
+
+.name {
+    color: #d21242;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.title {
+    color: #d21242;
+    font-size: 1.4em;
+}
+
+.email,
+.number {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.employeeTitle {
+    font-family: "Lato", serif;
+    font-weight: 800;
+    font-size: 4.7rem;
+    text-align: center;
+    margin-top: 10rem;
+    color: #191717;
 }
 
 .boxContainer {
     padding: 40px;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(150px, 1fr) );
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-template-rows: repeat(auto, minmax(80px, 1fr));
     gap: 40px;
     justify-content: center;
 }
 
-.linkButton {
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.3rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: none;
-    text-align: center;
+.userCardsBox {
+    display: flex;
+    margin: 4rem 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+}
+
+.infoBox {
+    padding: 1rem;
+}
+
+.userImgBox {
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .4s ease-in-out;
-    background-image: linear-gradient(63deg, #8EC5FC 0%, #E0C3FC);
-    opacity: .8;
-    color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.linkButton:hover {
-    opacity: 1;
+.userImg {
+    max-width: 350px;
+    border-radius: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.aboutText {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.linkButton {
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.linkButton svg {
+    margin-right: 2rem;
+    transition: all .4s ease-in-out;
+}
+
+.linkButton svg:hover {
+    transform: scale(1.1);
+}
+
+@media (width <=768px) {
+
+    .contactCard,
+    .userCardsBox {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contactTitle, .infoBox, .aboutTex{
+        text-align: center;
+    }
+}
+
+@media (width <=480px) {
+
+    .contactCard,
+    .userCardsBox {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contactTitle, .infoBox, .aboutText{
+        text-align: center;
+    }
 }
